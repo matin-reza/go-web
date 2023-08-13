@@ -1,0 +1,49 @@
+<html>
+<body>
+<div>
+    <form method="POST" action="/add">
+        <table>
+            <tr>
+                <td>nationalCode</td>
+                <td>
+                    <input name="id" type="hidden" value="{{.PersonEdit.Id}}"/>
+                    <input name="nationalCode" type="text" value="{{.PersonEdit.NationalCode}}"/>
+                </td>
+                <td>name</td>
+                <td>
+                    <input type="text" name="name" value="{{.PersonEdit.Name}}"/>
+                </td>
+                <td>lastName</td>
+                <td>
+                    <input type="text" name="lastName" value="{{.PersonEdit.LastName}}"/>
+
+                </td>
+                <td>
+                    <input type="submit" value="send"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div>
+    <table>
+        <tr>
+            <td>nationalCode</td>
+            <td>name</td>
+            <td>lastName</td>
+            <td></td>
+        </tr>
+        {{range $element := .Persons}}
+        <tr>
+            <td>{{.NationalCode}}</td>
+            <td>{{.Name}}</td>
+            <td>{{.LastName}}</td>
+            <td>
+                <a href="/edit?id={{.Id}}">edit</a>
+            </td>
+        </tr>
+        {{end}}
+    </table>
+</div>
+</body>
+</html>
